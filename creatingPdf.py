@@ -18,19 +18,29 @@ for index, row in df.iterrows():
     pdf.set_text_color(100,100,100)
     pdf.line(10,21,200,21)
 
-    # set a footer
+
+    # adding lines
+    for y in range(20,298,10):
+        pdf.line(10,y,200,y)
+
+        # set a footer
     pdf.ln(265)
-    pdf.set_font(family="Times", size=20, style="I")
-    pdf.cell(w=0, h=12, txt=row["Topic"], ln=1, border=0,align="R")
+    pdf.set_font(family="Times", size=12, style="I")
+    pdf.cell(w=0, h=12, txt=row["Topic"], ln=1, border=0, align="R")
     pdf.set_text_color(180, 180, 180)
+
+
 
     # adding pages
     for i in range(row["Pages"]-1):
         pdf.add_page()
         pdf.ln(275)
-        pdf.set_font(family="Times", size=20, style="I")
+        pdf.set_font(family="Times", size=12, style="I")
         pdf.cell(w=0, h=12, txt=row["Topic"], ln=1, border=0, align="R")
         pdf.set_text_color(180, 180, 180)
+        # adding lines
+        for y in range(20, 298, 10):
+            pdf.line(10, y, 200, y)
 
 
 pdf.output("output.pdf")
